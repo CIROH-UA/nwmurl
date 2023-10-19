@@ -455,8 +455,8 @@ def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput
     runinput = runinput
     
     if runinput == 1 or runinput == 5 or runinput == 6 or runinput == 7 or runinput == 8 or runinput == 9 or runinput == 10 or runinput == 11:
-        meminput = 0 
-        print("no unsumble members available for the given runinput therefore, meminput set to 0")
+        meminput = None 
+        print("no ensumble members available for the given runinput therefore, meminput set to None")
     # rundict = {
     # 1: "short_range",
     # 2: "medium_range",
