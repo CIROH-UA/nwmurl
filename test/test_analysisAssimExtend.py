@@ -1,12 +1,12 @@
 import os
 import unittest
 from urlgennwm import (
-    generate_urls,
-)  # Import the generate_urls function from your script
+    generate_urls_operational,
+)  # Import the generate_urls_operational function from your script
 
 
 class TestGenerateURLs(unittest.TestCase):
-    def test_generate_urls_for_analysis_assim_extend(self):
+    def test_generate_urls_operational_for_analysis_assim_extend(self):
         # Define test input values
         start_date = "202201120000"
         end_date = "202201130000"
@@ -17,9 +17,10 @@ class TestGenerateURLs(unittest.TestCase):
         runinput = 6  # Set to 6 for the analysis_assim_extend folder
         urlbaseinput = 2
         meminput = 1
+        write_to_file = True
 
         # Call the function to generate URLs
-        generate_urls(
+        generate_urls_operational(
             start_date,
             end_date,
             fcst_cycle,
@@ -29,6 +30,7 @@ class TestGenerateURLs(unittest.TestCase):
             runinput,
             urlbaseinput,
             meminput,
+            write_to_file,
         )
 
         # Check if the generated 'filenamelist.txt' file exists
