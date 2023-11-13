@@ -1,0 +1,8 @@
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range_puertorico_no_da/nwm.t00z.short_range_no_da.channel_rt.f001.puertorico.nc
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range_puertorico_no_da/nwm.t00z.short_range_no_da.channel_rt.f018.puertorico.nc
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range_puertorico_no_da/nwm.t08z.short_range_no_da.channel_rt.f001.puertorico.nc
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range_puertorico_no_da/nwm.t08z.short_range_no_da.channel_rt.f018.puertorico.nc
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range_puertorico_no_da/nwm.t00z.short_range_no_da.channel_rt.f001.puertorico.nc
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range_puertorico_no_da/nwm.t00z.short_range_no_da.channel_rt.f018.puertorico.nc
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range_puertorico_no_da/nwm.t08z.short_range_no_da.channel_rt.f001.puertorico.nc
+https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range_puertorico_no_da/nwm.t08z.short_range_no_da.channel_rt.f018.puertorico.nc
