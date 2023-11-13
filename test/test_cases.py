@@ -29,37 +29,44 @@ def test_selectrun():
 
 
 def test_makename():
-    assert makename(
-        datetime(2022, 1, 1, 0, 0, 0, 0),
-        "short_range",
-        "channel_rt",
-        0,
-        1,
-        "conus",
-        "forcing",
-        fhprefix="f",
-        runsuffix="_test",
-        varsuffix="_test",
-        run_typesuffix="_test",
-        urlbase_prefix="https://example.com/",
-    ) == "https://example.com/nwm.20220101/forcing_test/nwm.t00z.short_range_test.channel_rt_test.f001.conus.nc"
+    assert (
+        makename(
+            datetime(2022, 1, 1, 0, 0, 0, 0),
+            "short_range",
+            "channel_rt",
+            0,
+            1,
+            "conus",
+            "forcing",
+            fhprefix="f",
+            runsuffix="_test",
+            varsuffix="_test",
+            run_typesuffix="_test",
+            urlbase_prefix="https://example.com/",
+        )
+        == "https://example.com/nwm.20220101/forcing_test/nwm.t00z.short_range_test.channel_rt_test.f001.conus.nc"
+    )
 
-@pytest.mark.parametrize("runinput, varinput, geoinput, expected_output", [
-    (5, 5, 2, "forcing_analysis_assim_hawaii"),
-    (5, 5, 3, "forcing_analysis_assim_puertorico"),
-    (2, 5, 7, "forcing_medium_range"),
-    (1, 5, 7, "forcing_short_range"),
-    (1, 3, 3, "short_range_puertorico"),
-    (1, 5, 2, "forcing_short_range_hawaii"),
-    (1, 5, 3, "forcing_short_range_puertorico"),
-    (5, 5, 7, "forcing_analysis_assim"),
-    (6, 5, 7, "forcing_analysis_assim_extend"),
-    (5, 3, 3, "analysis_assim_puertorico"),
-    (10, 3, 3, "analysis_assim_puertorico_no_da"),
-    (1, 3, 3, "short_range_puertorico"),
-    (11, 3, 3, "short_range_puertorico_no_da"),
-    (2, 2, 2, "default_value")  # Add a test case for default value
-])
+
+@pytest.mark.parametrize(
+    "runinput, varinput, geoinput, expected_output",
+    [
+        (5, 5, 2, "forcing_analysis_assim_hawaii"),
+        (5, 5, 3, "forcing_analysis_assim_puertorico"),
+        (2, 5, 7, "forcing_medium_range"),
+        (1, 5, 7, "forcing_short_range"),
+        (1, 3, 3, "short_range_puertorico"),
+        (1, 5, 2, "forcing_short_range_hawaii"),
+        (1, 5, 3, "forcing_short_range_puertorico"),
+        (5, 5, 7, "forcing_analysis_assim"),
+        (6, 5, 7, "forcing_analysis_assim_extend"),
+        (5, 3, 3, "analysis_assim_puertorico"),
+        (10, 3, 3, "analysis_assim_puertorico_no_da"),
+        (1, 3, 3, "short_range_puertorico"),
+        (11, 3, 3, "short_range_puertorico_no_da"),
+        (2, 2, 2, "default_value"),  # Add a test case for default value
+    ],
+)
 def test_run_type(runinput, varinput, geoinput, expected_output):
     assert run_type(runinput, varinput, geoinput, "default_value") == expected_output
 
@@ -96,7 +103,33 @@ def test_selecturlbase():
     assert selecturlbase({1: "https://example.com/"}, 1) == "https://example.com/"
     assert selecturlbase({1: "https://example.com/"}, 2, "default") == "default"
 
-fcst_cycle_values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+
+fcst_cycle_values = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+]
 lead_time_values = [1, 2, 240]
 valid_base_urls = [
     "",
@@ -163,9 +196,10 @@ valid_folder_names = [
     "short_range",
     "medium_range",
     "long_range_mem7",
-    "medium_range_no_da_mem6"
+    "medium_range_no_da_mem6",
 ]
 import requests
+
 
 def is_valid_url(url):
     try:
@@ -175,32 +209,179 @@ def is_valid_url(url):
         return False
 
 
-@pytest.mark.parametrize("runinput, varinput, geoinput, meminput, start_date, end_date, fcst_cycle, urlbaseinput, lead_time, expected_output", [
-    (1, 1, 1, 0, "201809170000", "201809172300", fcst_cycle_values, 3, None, ["expected_file_name_1"]),
-    (5, 5, 2, 1, "201809170000", "201809171200", fcst_cycle_values, 1, lead_time_values, ["expected_file_name_2"]),
-    (2, 5, 3, 3, "201809170600", "201809171800", fcst_cycle_values, 2, lead_time_values, ["expected_file_name_3"]),
-    (1, 1, 5, 4, "201809170200", "201809171400", fcst_cycle_values, 4, lead_time_values, ["expected_file_name_4"]),
-    (2, 2, 4, 5, "201809170800", "201809172000", fcst_cycle_values, 5, lead_time_values, ["expected_file_name_5"]),
-    (3, 1, 5, 6, "201809171000", "201809172200", fcst_cycle_values, 6, lead_time_values, ["expected_file_name_6"]),
-    (4, 2, 5, 7, "201809171200", "201809172400", fcst_cycle_values, 7, lead_time_values, ["expected_file_name_7"]),
-    (5, 5, 1, 8, "201809171400", "201809172600", fcst_cycle_values, 8, lead_time_values, ["expected_file_name_8"]),
-    (6, 1, 16, 9, "201809171600", "201809172800", fcst_cycle_values, 9, lead_time_values, ["expected_file_name_9"]),
-    (8, 5, 3, 12, "201809172200", "201809173400", fcst_cycle_values, 12, lead_time_values, ["expected_file_name_12"]),
-    (11, 1, 3, 18, "201809173400", "201809174600", fcst_cycle_values, 18, lead_time_values, ["expected_file_name_18"]),
-])
-def test_create_file_list(runinput, varinput, geoinput, meminput, start_date, end_date, fcst_cycle, urlbaseinput, lead_time, expected_output):
-    file_list = create_file_list(runinput, varinput, geoinput, meminput, start_date, end_date, fcst_cycle, urlbaseinput, lead_time)
+@pytest.mark.parametrize(
+    "runinput, varinput, geoinput, meminput, start_date, end_date, fcst_cycle, urlbaseinput, lead_time, expected_output",
+    [
+        (
+            1,
+            1,
+            1,
+            0,
+            "201809170000",
+            "201809172300",
+            fcst_cycle_values,
+            3,
+            None,
+            ["expected_file_name_1"],
+        ),
+        (
+            5,
+            5,
+            2,
+            1,
+            "201809170000",
+            "201809171200",
+            fcst_cycle_values,
+            1,
+            lead_time_values,
+            ["expected_file_name_2"],
+        ),
+        (
+            2,
+            5,
+            3,
+            3,
+            "201809170600",
+            "201809171800",
+            fcst_cycle_values,
+            2,
+            lead_time_values,
+            ["expected_file_name_3"],
+        ),
+        (
+            1,
+            1,
+            5,
+            4,
+            "201809170200",
+            "201809171400",
+            fcst_cycle_values,
+            4,
+            lead_time_values,
+            ["expected_file_name_4"],
+        ),
+        (
+            2,
+            2,
+            4,
+            5,
+            "201809170800",
+            "201809172000",
+            fcst_cycle_values,
+            5,
+            lead_time_values,
+            ["expected_file_name_5"],
+        ),
+        (
+            3,
+            1,
+            5,
+            6,
+            "201809171000",
+            "201809172200",
+            fcst_cycle_values,
+            6,
+            lead_time_values,
+            ["expected_file_name_6"],
+        ),
+        (
+            4,
+            2,
+            5,
+            7,
+            "201809171200",
+            "201809172400",
+            fcst_cycle_values,
+            7,
+            lead_time_values,
+            ["expected_file_name_7"],
+        ),
+        (
+            5,
+            5,
+            1,
+            8,
+            "201809171400",
+            "201809172600",
+            fcst_cycle_values,
+            8,
+            lead_time_values,
+            ["expected_file_name_8"],
+        ),
+        (
+            6,
+            1,
+            16,
+            9,
+            "201809171600",
+            "201809172800",
+            fcst_cycle_values,
+            9,
+            lead_time_values,
+            ["expected_file_name_9"],
+        ),
+        (
+            8,
+            5,
+            3,
+            12,
+            "201809172200",
+            "201809173400",
+            fcst_cycle_values,
+            12,
+            lead_time_values,
+            ["expected_file_name_12"],
+        ),
+        (
+            11,
+            1,
+            3,
+            18,
+            "201809173400",
+            "201809174600",
+            fcst_cycle_values,
+            18,
+            lead_time_values,
+            ["expected_file_name_18"],
+        ),
+    ],
+)
+def test_create_file_list(
+    runinput,
+    varinput,
+    geoinput,
+    meminput,
+    start_date,
+    end_date,
+    fcst_cycle,
+    urlbaseinput,
+    lead_time,
+    expected_output,
+):
+    file_list = create_file_list(
+        runinput,
+        varinput,
+        geoinput,
+        meminput,
+        start_date,
+        end_date,
+        fcst_cycle,
+        urlbaseinput,
+        lead_time,
+    )
     assert isinstance(file_list, list)
     assert all(isinstance(file_name, str) for file_name in file_list)
     for url in file_list:
         # assert is_valid_url(url), f"Invalid URL: {url}"
-        assert any(substring in url for substring in valid_folder_names), f"No valid folder name found in URL: {url}"
-
+        assert any(
+            substring in url for substring in valid_folder_names
+        ), f"No valid folder name found in URL: {url}"
 
     # Check if all base URLs exist in the predefined list
     for url in file_list:
-        assert any(url.startswith(base_url) for base_url in valid_base_urls), f"Invalid base URL in generated URL: {url}"
-
+        assert any(
+            url.startswith(base_url) for base_url in valid_base_urls
+        ), f"Invalid base URL in generated URL: {url}"
 
 
 if __name__ == "__main__":

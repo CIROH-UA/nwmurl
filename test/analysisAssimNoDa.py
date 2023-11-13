@@ -1,6 +1,9 @@
 import os
 import unittest
-from urlgennwm import generate_urls  # Import the generate_urls function from your script
+from urlgennwm import (
+    generate_urls,
+)  # Import the generate_urls function from your script
+
 
 class TestGenerateURLs(unittest.TestCase):
     def test_generate_urls_for_analysis_assim_no_da(self):
@@ -16,7 +19,17 @@ class TestGenerateURLs(unittest.TestCase):
         meminput = 1
 
         # Call the function to generate URLs
-        generate_urls(start_date, end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput)
+        generate_urls(
+            start_date,
+            end_date,
+            fcst_cycle,
+            lead_time,
+            varinput,
+            geoinput,
+            runinput,
+            urlbaseinput,
+            meminput,
+        )
 
         # Check if the generated 'filenamelist.txt' file exists
         self.assertTrue(os.path.exists("filenamelist.txt"))
@@ -38,6 +51,7 @@ class TestGenerateURLs(unittest.TestCase):
             content = file.read()
             for url in expected_urls:
                 self.assertIn(url, content)
-                
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     unittest.main()

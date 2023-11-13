@@ -1,14 +1,14 @@
-#from gevent import monkey
-#monkey.patch_all()
+# from gevent import monkey
+# monkey.patch_all()
 from dateutil import rrule
 from datetime import datetime, timezone
 from itertools import product
 import time
 import os
 
-#from concurrent.futures import ThreadPoolExecutor
-#import gevent
-#import requests
+# from concurrent.futures import ThreadPoolExecutor
+# import gevent
+# import requests
 from functools import partial
 from tqdm import tqdm
 
@@ -71,6 +71,7 @@ memdict = {
 vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
 
 geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
+
 
 def selectvar(vardict, varinput):
     return vardict[varinput]
@@ -190,7 +191,6 @@ urlbasedict = {
     8: "s3://noaa-nwm-pds/",
     9: "https://ciroh-nwm-zarr-copy.s3.amazonaws.com/national-water-model/",
 }
-
 
 
 def selecturlbase(urlbasedict, urlbaseinput, defaulturlbase=""):
@@ -440,26 +440,48 @@ def create_file_list(
             )
         )
     return r
-def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput):
 
-    
+
+def generate_urls(
+    start_date,
+    end_date,
+    fcst_cycle,
+    lead_time,
+    varinput,
+    geoinput,
+    runinput,
+    urlbaseinput,
+    meminput,
+):
+
     start_date = start_date
-    end_date   = end_date
+    end_date = end_date
     fcst_cycle = fcst_cycle
     # fcst_cycle = None # Retrieves a full day for each day within the range given.
-    #lead_time = [1]
+    # lead_time = [1]
     lead_time = lead_time
     varinput = varinput
-    #vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
+    # vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
     geoinput = geoinput
-    #geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
+    # geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
     meminput = meminput
     urlbaseinput = urlbaseinput
     runinput = runinput
-    
-    if runinput == 1 or runinput == 5 or runinput == 6 or runinput == 7 or runinput == 8 or runinput == 9 or runinput == 10 or runinput == 11:
-        meminput = 0 
-        print("no unsumble members available for the given runinput therefore, meminput set to 0")
+
+    if (
+        runinput == 1
+        or runinput == 5
+        or runinput == 6
+        or runinput == 7
+        or runinput == 8
+        or runinput == 9
+        or runinput == 10
+        or runinput == 11
+    ):
+        meminput = 0
+        print(
+            "no unsumble members available for the given runinput therefore, meminput set to 0"
+        )
     # rundict = {
     # 1: "short_range",
     # 2: "medium_range",
@@ -495,6 +517,7 @@ def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput
         with open("filenamelist.txt", "wt") as file:
             for item in file_list:
                 file.write(f"{item}\n")
+
 
 # start_date = "202201120000"
 # end_date   = "202201130000"
