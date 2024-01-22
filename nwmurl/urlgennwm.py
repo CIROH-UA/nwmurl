@@ -1,6 +1,5 @@
 #from gevent import monkey
 #monkey.patch_all()
-//validation imported
 from validation_util import check_valid_urls
 from dateutil import rrule
 from datetime import datetime, timezone
