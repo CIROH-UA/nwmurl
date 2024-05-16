@@ -166,6 +166,7 @@ urlbasedict_retro = {
     2: "s3://noaa-nwm-retrospective-2-1-pds/",
     3: "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/",
     4: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/CONUS/netcdf/",
+    5: "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-2-1-zarr-pds/",
 }
 
 
@@ -495,7 +496,8 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
             for type in retrospective_var_types
         ]
     
-    if urlbase_prefix == "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/":
+    #if urlbase_prefix == "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/":
+    if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
         url = url + ".json"
         url = url.replace('.comp', '')
     return url
