@@ -486,7 +486,7 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
     year_txt = date.strftime("%Y")
     date_txt = date.strftime("%Y%m%d%H")
     
-    if "forcing" in file_type and date.year < 2007:
+    if "forcing" in file_type and (date.year < 2007 or '3-0' in urlbase_prefix):
         url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00.LDASIN_DOMAIN1"
     elif "forcing" in file_type and date.year >= 2007:
         url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}.LDASIN_DOMAIN1"
@@ -496,7 +496,6 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
             for type in retrospective_var_types
         ]
     
-    #if urlbase_prefix == "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/":
     if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
         url = url + ".json"
         url = url.replace('.comp', '')
