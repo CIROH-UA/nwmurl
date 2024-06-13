@@ -157,6 +157,7 @@ retrospective_var_types = {
     4: ".LDASOUT_DOMAIN1.comp",
     5: ".RTOUT_DOMAIN1.comp",
     6: ".LDASIN_DOMAIN1.comp",
+    7: ".CHANOBS_DOMAIN1.comp",
 }
 
 objecttypes = {1: "forcing/", 2: "model_output/"}
@@ -167,6 +168,7 @@ urlbasedict_retro = {
     3: "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/",
     4: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/CONUS/netcdf/",
     5: "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-2-1-zarr-pds/",
+    6: "s3://noaa-nwm-retrospective-3-0-pds/CONUS/netcdf/"
 }
 
 
@@ -203,9 +205,16 @@ def generate_urls_retro(
     file_list = []
     for date in date_range:
         for obj_type in objecttype:
-            file_names = generate_url_retro(
-                date, obj_type, urlbase_prefix, retrospective_var_types_selected
-            )
+            if '2-1' in urlbase_prefix:
+                if ".CHANOBS_DOMAIN1.comp" in retrospective_var_types_selected:
+                    raise ValueError("NWM 2.1 version does not contain CHANOBS")
+                file_names = generate_url_retro(
+                    date, obj_type, urlbase_prefix, retrospective_var_types_selected
+                )
+            else:
+                file_names = generate_url_retro_3_0(
+                    date, obj_type, urlbase_prefix, retrospective_var_types_selected
+                )
             if file_names is not None:
                 if isinstance(file_names, list):
                     file_list.extend(file_names)
@@ -485,7 +494,7 @@ def create_file_list(
 def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=None):
     year_txt = date.strftime("%Y")
     date_txt = date.strftime("%Y%m%d%H")
-    
+
     if "forcing" in file_type and (date.year < 2007 or '3-0' in urlbase_prefix):
         url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00.LDASIN_DOMAIN1"
     elif "forcing" in file_type and date.year >= 2007:
@@ -499,6 +508,31 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
     if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
         url = url + ".json"
         url = url.replace('.comp', '')
+
+    if "forcing" in file_type and '3-0' in urlbase_prefix:
+        url = url.replace("forcing", "FORCING")
+        
+    return url
+
+
+def generate_url_retro_3_0(date, file_type, urlbase_prefix, retrospective_var_types=None):
+    year_txt = date.strftime("%Y")
+    date_txt = date.strftime("%Y%m%d%H")
+
+    if "forcing" in file_type:
+        url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00.LDASIN_DOMAIN1"
+    elif "model_output" in file_type:
+        url = [
+            f"{urlbase_prefix}{type.replace('_DOMAIN1.comp', '')[1:].upper()}/{year_txt}/{date_txt}00{type.replace('.comp', '')}"
+            for type in retrospective_var_types
+        ]
+    
+    if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
+        url = url + ".json"
+
+    if "forcing" in file_type:
+        url = url.replace("forcing", "FORCING")
+
     return url
 
 
