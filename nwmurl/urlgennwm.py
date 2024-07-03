@@ -524,7 +524,7 @@ def generate_url_retro_3_0(date, file_type, urlbase_prefix, retrospective_var_ty
     elif "model_output" in file_type:
         url = [
             f"{urlbase_prefix}{type.replace('_DOMAIN1.comp', '')[1:].upper()}/{year_txt}/{date_txt}00{type.replace('.comp', '')}"
-            for type in retrospective_var_types
+            for type in retrospective_var_types if type != ".LDASIN_DOMAIN1.comp"
         ]
     
     if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
