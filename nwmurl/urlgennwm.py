@@ -522,10 +522,15 @@ def generate_url_retro_3_0(date, file_type, urlbase_prefix, retrospective_var_ty
     if "forcing" in file_type:
         url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00.LDASIN_DOMAIN1"
     elif "model_output" in file_type:
-        url = [
-            f"{urlbase_prefix}{type.replace('_DOMAIN1.comp', '')[1:].upper()}/{year_txt}/{date_txt}00{type.replace('.comp', '')}"
-            for type in retrospective_var_types if type != ".LDASIN_DOMAIN1.comp"
-        ]
+        url = []
+        for type in retrospective_var_types:
+            if type == ".LDASIN_DOMAIN1.comp":
+                continue
+            elif (type == ".LDASOUT_DOMAIN1.comp" or type == ".RTOUT_DOMAIN1.comp") and int(date_txt[-2:]) % 3 != 0:
+                continue
+            else:
+                url.append((f"{urlbase_prefix}{type.replace('_DOMAIN1.comp', '')[1:].upper()}/{year_txt}/{date_txt}00"
+                            f"{type.replace('.comp', '')}"))
     
     if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
         url = url + ".json"
