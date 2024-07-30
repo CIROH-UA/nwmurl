@@ -51,6 +51,6 @@ jobs:
       - name: Publish package if tests passed
         if: success()  # Only runs if the previous steps were successful
         run: |
-          pip install twine==4.0.2
+          pip install twine==5.1.1
           echo "PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}"  # Print the API token for verification
           twine upload -u '__token__' -p ${{ secrets.PYPI_API_TOKEN }} dist/*
