@@ -38,14 +38,14 @@ class TestGenerateURLs(unittest.TestCase):
 
         # Define the expected URLs or patterns for the analysis_assim_puertorico_no_da folder
         expected_urls = [
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm018.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm018.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm018.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm018.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm01.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm18.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm01.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm18.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm01.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t00z.analysis_assim_no_da.channel_rt.tm18.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm01.puertorico.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_puertorico_no_da/nwm.t08z.analysis_assim_no_da.channel_rt.tm18.puertorico.nc",
         ]
 
         # Read the content of the file and check for the expected content

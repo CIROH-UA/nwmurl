@@ -38,14 +38,14 @@ class TestGenerateURLs(unittest.TestCase):
 
         # Define the expected URLs or patterns for the assim_extend_no_da folder
         expected_urls = [
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm018.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm01.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm18.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm01.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm18.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm01.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t00z.analysis_assim_extend_no_da.channel_rt.tm18.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm01.conus.nc",
+            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim_extend_no_da/nwm.t08z.analysis_assim_extend_no_da.channel_rt.tm18.conus.nc",
         ]
 
         # Read the content of the file and check for the expected content
