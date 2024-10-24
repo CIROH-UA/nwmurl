@@ -62,7 +62,7 @@ def makename(
     datetxt = f"nwm.{date.strftime('%Y%m%d')}"
     foldertxt = f"{run_type}{run_typesuffix}"
     
-    if "analysis_assim" in run_type:
+    if run_type is not None and "analysis_assim" in run_type:
         filetxt = f"nwm.t{fcst_cycle:02d}z.{run_name}{runsuffix}.{var_name}{varsuffix}.{fhprefix}{fcst_hour:02d}.{geography}.nc"
     else:
         filetxt = f"nwm.t{fcst_cycle:02d}z.{run_name}{runsuffix}.{var_name}{varsuffix}.{fhprefix}{fcst_hour:03d}.{geography}.nc"
