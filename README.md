@@ -10,7 +10,17 @@ Developed by CIROH 2023
 You can install `nwmurl` using pip:
 
 ```bash
+pip install python-dateutil
 pip install nwmurl
+```
+
+In virtual environment, use the following commands:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install python-dateutil
+python -m pip install nwmurl
 ```
 
 ## Usage
