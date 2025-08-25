@@ -1,19 +1,13 @@
 from gevent import monkey
 monkey.patch_all()
-from validation_util import check_valid_urls
+if __name__ == '__main__':
+    import sys
+    sys.path.append('.')
+from nwmurl.validation_util import check_valid_urls
 from dateutil import rrule
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from itertools import product
-import time
 import os
-import unittest
-
-
-from concurrent.futures import ThreadPoolExecutor
-import gevent
-import requests
-from functools import partial
-from tqdm import tqdm
 
 
 rundict = {
@@ -689,35 +683,18 @@ def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput
             for item in file_list:
                 file.write(f"{item}\n")
 
-start_date = "202310150000"
-end_date   = "202310150000"
-fcst_cycle = [0,8]
-lead_time = [1,18]
-varinput = 1
-geoinput = 1
-runinput = 1
-urlbaseinput = 2
-meminput = 1
-generate_urls(start_date, end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput)
-# Example usage
-file_list = create_file_list(runinput, varinput, geoinput, meminput, start_date, end_date, fcst_cycle, urlbaseinput, lead_time)
-valid_files = check_valid_urls(file_list)
 
-
-
-# class TestValidationScript(unittest.TestCase):
-#     def test_check_url(self):
-#         # Test a valid URL
-#         valid_url = "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/"
-#         file_path = "filenamelist.txt"  # Provide a valid file path or filename
-#         result = check_url(file_path, valid_url)  # Provide both file path and URL
-#         self.assertEqual(result, valid_url)
-
-#         # Test an invalid URL
-#         invalid_url = ""
-#         result = check_url("", invalid_url)  # Provide an empty file path for an invalid URL
-#         self.assertIsNone(result)
-
-# if __name__ == '__main__':
-#     unittest.main()
-
+if __name__ == "__main__":
+    start_date = "202310150000"
+    end_date   = "202310150000"
+    fcst_cycle = [0,8]
+    lead_time = [1,18]
+    varinput = 1
+    geoinput = 1
+    runinput = 1
+    urlbaseinput = 2
+    meminput = 1
+    generate_urls(start_date, end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput)
+    # Example usage
+    file_list = create_file_list(runinput, varinput, geoinput, meminput, start_date, end_date, fcst_cycle, urlbaseinput, lead_time)
+    valid_files = check_valid_urls(file_list)

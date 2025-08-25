@@ -1,6 +1,6 @@
 import os
 import unittest
-from urlgennwm import (
+from nwmurl.urlgennwm import (
     generate_urls_operational,
 )  # Import the generate_urls_operational function from your script
 

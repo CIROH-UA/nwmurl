@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime
-from urlgennwm import (
+from nwmurl.urlgennwm import (
     selectvar,
     selectgeo,
     selectrun,
