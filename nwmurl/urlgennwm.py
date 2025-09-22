@@ -1,5 +1,3 @@
-from gevent import monkey
-monkey.patch_all()
 if __name__ == '__main__':
     import sys
     sys.path.append('.')
