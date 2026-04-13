@@ -90,3 +90,17 @@ class TestURLValidation(unittest.TestCase):
     # 9: "https://ciroh-nwm-zarr-copy.s3.amazonaws.com/national-water-model/",
     def test_validate_for_urlbaseinput_9(self):
         self.try_test_for_urlbaseinput(9)
+        
+    def test_obviously_invalid_urls(self):
+        # Create a list of obviously invalid URLs
+        invalid_urls = [
+            "https://example.com/invalid_file_1.nc",
+            "https://example.com/invalid_file_2.nc",
+            "https://example.com/invalid_file_3.nc",
+        ]
+        
+        # Check the validity of the obviously invalid URLs
+        valid_urls = check_valid_urls(invalid_urls, visualize_progress=False)
+        
+        # Assert that none of the invalid URLs are considered valid
+        self.assertEqual(len(valid_urls), 0, f"Expected 0 valid URLs, but found {len(valid_urls)}.")
