@@ -712,6 +712,11 @@ def generate_urls(
         with open("filenamelist.txt", "wt") as file:
             for item in file_list:
                 file.write(f"{item}\n")
+                
+def check_all_urls_valid(file_list)->bool:
+    """Checks if all URLs in the file list are valid."""
+    valid_files = check_valid_urls(file_list)
+    return len(valid_files) == len(file_list)
 
 
 if __name__ == "__main__":
@@ -722,7 +727,7 @@ if __name__ == "__main__":
     varinput = 1
     geoinput = 1
     runinput = 1
-    urlbaseinput = 2
+    urlbaseinput = 4
     meminput = 0
     generate_urls(
         start_date,
@@ -747,4 +752,7 @@ if __name__ == "__main__":
         urlbaseinput,
         lead_time,
     )
+    print(f"Total URLs generated: {len(file_list)}")
+    print(f"First URL: {file_list[0]}")
     valid_files = check_valid_urls(file_list)
+    print(f"Valid URLs: {len(valid_files)} out of {len(file_list)}")

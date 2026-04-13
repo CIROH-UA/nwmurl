@@ -22,7 +22,7 @@ def check_valid_urls(file_list, session=None, visualize_progress=True):
 def check_url(t, file):
     filename = file.split("/")[-1]
     try:
-        with requests.head(file) as response:
+        with requests.head(file, allow_redirects=True) as response:
             if response.status_code == 200:
                 if t:
                     t.set_description(f"Found: {filename}")
@@ -30,6 +30,7 @@ def check_url(t, file):
                     t.refresh()
                 return file
             else:
+                # print(f"Not Found: {filename} (Status Code: {response.status_code})")
                 if t:
                     t.set_description(f"Not Found: {filename}")
                     t.update(1)
