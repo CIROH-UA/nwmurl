@@ -1,6 +1,7 @@
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
-    sys.path.append('.')
+
+    sys.path.append(".")
 from nwmurl.validation_util import check_valid_urls
 from dateutil import rrule
 from datetime import datetime, timezone, timedelta
@@ -64,7 +65,7 @@ def makename(
 
     datetxt = f"nwm.{date.strftime('%Y%m%d')}"
     foldertxt = f"{run_type}{run_typesuffix}"
-    
+
     if run_type is not None and "analysis_assim" in run_type:
         filetxt = f"nwm.t{fcst_cycle:02d}z.{run_name}{runsuffix}.{var_name}{varsuffix}.{fhprefix}{fcst_hour:02d}.{geography}.nc"
     else:
@@ -214,7 +215,7 @@ def generate_urls_retro(
     file_list = []
     for date in date_range:
         for obj_type in objecttype:
-            if '2-1' in urlbase_prefix:
+            if "2-1" in urlbase_prefix:
                 if ".CHANOBS_DOMAIN1.comp" in retrospective_var_types_selected:
                     raise ValueError("NWM 2.1 version does not contain CHANOBS")
                 file_names = generate_url_retro(
@@ -229,7 +230,7 @@ def generate_urls_retro(
                     file_list.extend(file_names)
                 else:
                     file_list.append(file_names)
-    if write_to_file == True:
+    if write_to_file:
         if os.path.exists("retro_filenamelist.txt"):
             os.remove("retro_filenamelist.txt")
         with open("retro_filenamelist.txt", "wt") as file:
@@ -476,7 +477,8 @@ def create_file_list(
                     vsuff,
                     rtsuff,
                     urlbase_prefix,
-                ) + ".json"
+                )
+                + ".json"
             )
         else:
             r.append(
@@ -495,8 +497,7 @@ def create_file_list(
                     urlbase_prefix,
                 )
             )
-    
-    
+
     return r
 
 
@@ -504,7 +505,7 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
     year_txt = date.strftime("%Y")
     date_txt = date.strftime("%Y%m%d%H")
 
-    if "forcing" in file_type and (date.year < 2007 or '3-0' in urlbase_prefix):
+    if "forcing" in file_type and (date.year < 2007 or "3-0" in urlbase_prefix):
         url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00.LDASIN_DOMAIN1"
     elif "forcing" in file_type and date.year >= 2007:
         url = f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}.LDASIN_DOMAIN1"
@@ -513,18 +514,20 @@ def generate_url_retro(date, file_type, urlbase_prefix, retrospective_var_types=
             f"{urlbase_prefix}{file_type}{year_txt}/{date_txt}00{type}"
             for type in retrospective_var_types
         ]
-    
+
     if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
         url = url + ".json"
-        url = url.replace('.comp', '')
+        url = url.replace(".comp", "")
 
-    if "forcing" in file_type and '3-0' in urlbase_prefix:
+    if "forcing" in file_type and "3-0" in urlbase_prefix:
         url = url.replace("forcing", "FORCING")
-        
+
     return url
 
 
-def generate_url_retro_3_0(date, file_type, urlbase_prefix, retrospective_var_types=None):
+def generate_url_retro_3_0(
+    date, file_type, urlbase_prefix, retrospective_var_types=None
+):
     year_txt = date.strftime("%Y")
     date_txt = date.strftime("%Y%m%d%H")
 
@@ -535,12 +538,18 @@ def generate_url_retro_3_0(date, file_type, urlbase_prefix, retrospective_var_ty
         for type in retrospective_var_types:
             if type == ".LDASIN_DOMAIN1.comp":
                 continue
-            elif (type == ".LDASOUT_DOMAIN1.comp" or type == ".RTOUT_DOMAIN1.comp") and int(date_txt[-2:]) % 3 != 0:
+            elif (
+                type == ".LDASOUT_DOMAIN1.comp" or type == ".RTOUT_DOMAIN1.comp"
+            ) and int(date_txt[-2:]) % 3 != 0:
                 continue
             else:
-                url.append((f"{urlbase_prefix}{type.replace('_DOMAIN1.comp', '')[1:].upper()}/{year_txt}/{date_txt}00"
-                            f"{type.replace('.comp', '')}"))
-    
+                url.append(
+                    (
+                        f"{urlbase_prefix}{type.replace('_DOMAIN1.comp', '')[1:].upper()}/{year_txt}/{date_txt}00"
+                        f"{type.replace('.comp', '')}"
+                    )
+                )
+
     if "ciroh-nwm-zarr-retrospective-data-copy" in urlbase_prefix:
         if isinstance(url, list):
             url = [u + ".json" for u in url]
@@ -618,33 +627,56 @@ def generate_urls_operational(
         urlbaseinput,
         lead_time,
     )
-    if write_to_file == True:
+    if write_to_file:
         if os.path.exists("filenamelist.txt"):
             os.remove("filenamelist.txt")
         with open("filenamelist.txt", "wt") as file:
             for item in file_list:
                 file.write(f"{item}\n")
     return file_list
-def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput):
 
-    
+
+def generate_urls(
+    start_date,
+    end_date,
+    fcst_cycle,
+    lead_time,
+    varinput,
+    geoinput,
+    runinput,
+    urlbaseinput,
+    meminput,
+):
+
     start_date = start_date
-    end_date   = end_date
+    end_date = end_date
     fcst_cycle = fcst_cycle
     # fcst_cycle = None # Retrieves a full day for each day within the range given.
-    #lead_time = [1]
+    # lead_time = [1]
     lead_time = lead_time
     varinput = varinput
-    #vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
+    # vardict = {1: "channel_rt", 2: "land", 3: "reservoir", 4: "terrain_rt", 5: "forcing"}
     geoinput = geoinput
-    #geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
+    # geodict = {1: "conus", 2: "hawaii", 3: "puertorico"}
     meminput = meminput
     urlbaseinput = urlbaseinput
     runinput = runinput
-    
-    if runinput == 1 or runinput == 5 or runinput == 6 or runinput == 7 or runinput == 8 or runinput == 9 or runinput == 10 or runinput == 11:
-        meminput = 0 
-        print("no unsumble members available for the given runinput therefore, meminput set to 0")
+
+    if (
+        runinput == 1
+        or runinput == 5
+        or runinput == 6
+        or runinput == 7
+        or runinput == 8
+        or runinput == 9
+        or runinput == 10
+        or runinput == 11
+    ):
+        if meminput != 0:
+            meminput = 0
+            print(
+                "no unsumble members available for the given runinput therefore, meminput set to 0"
+            )
     # rundict = {
     # 1: "short_range",
     # 2: "medium_range",
@@ -684,15 +716,35 @@ def generate_urls(start_date,end_date, fcst_cycle, lead_time, varinput, geoinput
 
 if __name__ == "__main__":
     start_date = "202310150000"
-    end_date   = "202310150000"
-    fcst_cycle = [0,8]
-    lead_time = [1,18]
+    end_date = "202310150000"
+    fcst_cycle = [0, 8]
+    lead_time = [1, 18]
     varinput = 1
     geoinput = 1
     runinput = 1
     urlbaseinput = 2
-    meminput = 1
-    generate_urls(start_date, end_date, fcst_cycle, lead_time, varinput, geoinput, runinput, urlbaseinput, meminput)
+    meminput = 0
+    generate_urls(
+        start_date,
+        end_date,
+        fcst_cycle,
+        lead_time,
+        varinput,
+        geoinput,
+        runinput,
+        urlbaseinput,
+        meminput,
+    )
     # Example usage
-    file_list = create_file_list(runinput, varinput, geoinput, meminput, start_date, end_date, fcst_cycle, urlbaseinput, lead_time)
+    file_list = create_file_list(
+        runinput,
+        varinput,
+        geoinput,
+        meminput,
+        start_date,
+        end_date,
+        fcst_cycle,
+        urlbaseinput,
+        lead_time,
+    )
     valid_files = check_valid_urls(file_list)
