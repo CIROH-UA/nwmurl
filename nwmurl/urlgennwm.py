@@ -249,8 +249,16 @@ def create_file_list(
     fcst_cycle=None,
     urlbaseinput=None,
     lead_time=None,  # TODO: change this order; placed here to avoid breaking change
+    enforce_valid_outputs: int = 0,
 ):
-    """for given date,  run, var, fcst_cycle, and geography, print file names for the valid time (the range of fcst_hours) and dates"""
+    """
+    for given date,  run, var, fcst_cycle, and geography, print file names for the valid time (the range of fcst_hours) and dates
+
+    enforce_valid_outputs (int):
+        0: do not check URLs for validity, return all generated URLs
+        1: check URLs for validity, return only valid URLs
+        2: check URLs for validity, raise ValueError if any URLs are invalid, otherwise return all generated URLs
+    """
 
     runsuff = ""
 
@@ -498,6 +506,17 @@ def create_file_list(
                 )
             )
 
+    if enforce_valid_outputs > 0:
+        valid_files = check_valid_urls(r)
+        if enforce_valid_outputs == 1:
+            return valid_files
+        elif enforce_valid_outputs == 2:
+            if len(valid_files) != len(r):
+                invalid_files = set(r) - set(valid_files)
+                raise ValueError(f"The following URLs are invalid: {invalid_files}")
+            else:
+                return r
+
     return r
 
 
@@ -712,11 +731,6 @@ def generate_urls(
         with open("filenamelist.txt", "wt") as file:
             for item in file_list:
                 file.write(f"{item}\n")
-                
-def check_all_urls_valid(file_list)->bool:
-    """Checks if all URLs in the file list are valid."""
-    valid_files = check_valid_urls(file_list)
-    return len(valid_files) == len(file_list)
 
 
 if __name__ == "__main__":
