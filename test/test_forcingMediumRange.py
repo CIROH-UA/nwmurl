@@ -16,7 +16,7 @@ class TestGenerateURLs(unittest.TestCase):
         geoinput = 1
         runinput = 2  # Set to 2 for the forcing_medium_range folder
         urlbaseinput = 3
-        meminput = 1
+        meminput = None  # forcing_medium_range is incompatible with meminput
         write_to_file = True
 
         # Call the function to generate URLs
@@ -38,14 +38,14 @@ class TestGenerateURLs(unittest.TestCase):
 
         # Define the expected URLs or patterns for the forcing_medium_range folder
         expected_urls = [
-            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range_mem1/nwm.t00z.medium_range.forcing_1.f001.conus.nc",
-            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range_mem1/nwm.t00z.medium_range.forcing_1.f018.conus.nc",
-            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range_mem1/nwm.t08z.medium_range.forcing_1.f001.conus.nc",
-            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range_mem1/nwm.t08z.medium_range.forcing_1.f018.conus.nc",
-            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range_mem1/nwm.t00z.medium_range.forcing_1.f001.conus.nc",
-            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range_mem1/nwm.t00z.medium_range.forcing_1.f018.conus.nc",
-            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range_mem1/nwm.t08z.medium_range.forcing_1.f001.conus.nc",
-            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range_mem1/nwm.t08z.medium_range.forcing_1.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range/nwm.t00z.medium_range.forcing.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range/nwm.t00z.medium_range.forcing.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range/nwm.t08z.medium_range.forcing.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_medium_range/nwm.t08z.medium_range.forcing.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range/nwm.t00z.medium_range.forcing.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range/nwm.t00z.medium_range.forcing.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range/nwm.t08z.medium_range.forcing.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_medium_range/nwm.t08z.medium_range.forcing.f018.conus.nc",
         ]
 
         # Read the content of the file and check for the expected content
