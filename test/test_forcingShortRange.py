@@ -15,7 +15,7 @@ class TestGenerateURLs(unittest.TestCase):
         varinput = 10
         geoinput = 1
         runinput = 1  # Set to 1 for the forcing_short_range folder
-        urlbaseinput = 2
+        urlbaseinput = 3
         meminput = 1
         write_to_file = True
 
@@ -38,14 +38,14 @@ class TestGenerateURLs(unittest.TestCase):
 
         # Define the expected URLs or patterns for the forcing_short_range folder
         expected_urls = [
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range/nwm.t00z.short_range.variable_error.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range/nwm.t00z.short_range.variable_error.f018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range/nwm.t08z.short_range.variable_error.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/short_range/nwm.t08z.short_range.variable_error.f018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range/nwm.t00z.short_range.variable_error.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range/nwm.t00z.short_range.variable_error.f018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range/nwm.t08z.short_range.variable_error.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/short_range/nwm.t08z.short_range.variable_error.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/short_range/nwm.t00z.short_range.variable_error.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/short_range/nwm.t00z.short_range.variable_error.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/short_range/nwm.t08z.short_range.variable_error.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/short_range/nwm.t08z.short_range.variable_error.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/short_range/nwm.t00z.short_range.variable_error.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/short_range/nwm.t00z.short_range.variable_error.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/short_range/nwm.t08z.short_range.variable_error.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/short_range/nwm.t08z.short_range.variable_error.f018.conus.nc",
         ]
 
         # Read the content of the file and check for the expected content
