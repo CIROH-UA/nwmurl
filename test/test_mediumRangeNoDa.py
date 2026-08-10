@@ -15,7 +15,7 @@ class TestGenerateURLs(unittest.TestCase):
         varinput = 1
         geoinput = 1
         runinput = 3  # Set to 5 for the analysis_assim folder
-        urlbaseinput = 2
+        urlbaseinput = 3
         meminput = 1
         write_to_file = True
 
@@ -39,14 +39,14 @@ class TestGenerateURLs(unittest.TestCase):
         # Define the expected URLs or patterns for the analysis_assim folder
         # Define the expected URLs or patterns for the analysis_assim folder
         expected_urls = [
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f018.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f001.conus.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/medium_range_no_da_mem1/nwm.t00z.medium_range_no_da.channel_rt_1.f018.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f001.conus.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/medium_range_no_da_mem1/nwm.t08z.medium_range_no_da.channel_rt_1.f018.conus.nc",
         ]
 
         # Read the content of the file and check for the expected content

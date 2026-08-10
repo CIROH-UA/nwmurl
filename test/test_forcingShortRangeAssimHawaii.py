@@ -15,7 +15,7 @@ class TestGenerateURLs(unittest.TestCase):
         varinput = 5
         geoinput = 2
         runinput = 1  # Set to 1 for the forcing_short_range_assim_hawaii folder
-        urlbaseinput = 2
+        urlbaseinput = 3
         meminput = 1
         write_to_file = True
 
@@ -38,14 +38,14 @@ class TestGenerateURLs(unittest.TestCase):
 
         # Define the expected URLs or patterns for the forcing_short_range_assim_hawaii folder
         expected_urls = [
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f001.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f018.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f001.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f018.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f001.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f018.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f001.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f018.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f001.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f018.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f001.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f018.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f001.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_hawaii/nwm.t00z.short_range.forcing.f018.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f001.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_hawaii/nwm.t08z.short_range.forcing.f018.hawaii.nc",
         ]
 
         # Read the content of the file and check for the expected content

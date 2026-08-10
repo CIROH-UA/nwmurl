@@ -15,7 +15,7 @@ class TestGenerateURLs(unittest.TestCase):
         varinput = 1
         geoinput = 2
         runinput = 5  # Set to 5 for the analysis_assim_hawaii folder
-        urlbaseinput = 2
+        urlbaseinput = 3
         meminput = 1
         write_to_file = True
 
@@ -38,14 +38,14 @@ class TestGenerateURLs(unittest.TestCase):
 
         # Define the expected URLs or patterns for the analysis_assim_hawaii folder
         expected_urls = [
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm01.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm18.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm01.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm18.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm01.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm18.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm01.hawaii.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm18.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm01.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm18.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm01.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm18.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm01.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/analysis_assim/nwm.t00z.analysis_assim.channel_rt.tm18.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm01.hawaii.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/analysis_assim/nwm.t08z.analysis_assim.channel_rt.tm18.hawaii.nc",
         ]
 
         # Read the content of the file and check for the expected content

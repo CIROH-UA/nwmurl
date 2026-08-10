@@ -15,7 +15,7 @@ class TestGenerateURLs(unittest.TestCase):
         varinput = 5
         geoinput = 3
         runinput = 1  # Set to 1 for the forcing_short_range_assim_puerorico folder
-        urlbaseinput = 2
+        urlbaseinput = 3
         meminput = 1
         write_to_file = True
 
@@ -38,14 +38,14 @@ class TestGenerateURLs(unittest.TestCase):
 
         # Define the expected URLs or patterns for the forcing_short_range_assim_puerorico folder
         expected_urls = [
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f018.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220112/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f018.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f018.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f001.puertorico.nc",
-            "https://nomads.ncep.noaa.gov/pub/data/nccf/com/nwm/post-processed/WMS/nwm.20220113/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f018.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f001.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f018.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f001.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220112/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f018.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f001.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_puertorico/nwm.t00z.short_range.forcing.f018.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f001.puertorico.nc",
+            "https://storage.googleapis.com/national-water-model/nwm.20220113/forcing_short_range_puertorico/nwm.t08z.short_range.forcing.f018.puertorico.nc",
         ]
 
         # Read the content of the file and check for the expected content
