@@ -97,7 +97,7 @@ lead_time = [1,18]
 varinput = 1
 geoinput = 1
 runinput = 1
-urlbaseinput = 2
+urlbaseinput = 3
 meminput = 1
 write_to_file = False
 
