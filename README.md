@@ -67,6 +67,9 @@ pip install nwmurl
     - `2`: "s3://noaa-nwm-retrospective-2-1-pds/model_output/".
     - `3`: "https://ciroh-nwm-zarr-retrospective-data-copy.s3.amazonaws.com/noaa-nwm-retrospective-2-1-zarr-pds/".
     - `4`: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/CONUS/netcdf/".
+    - `5`:  "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-2-1-zarr-pds/"
+    - `6`: "s3://noaa-nwm-retrospective-3-0-pds/CONUS/netcdf/",
+    - `7`: "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-3-0-pds/CONUS/netcdf/"
 - `selected_object_type`: A list of integers representing the object type. Available options include:
 	- `1` for forcing data
 	- `2` for model_output
@@ -94,7 +97,7 @@ lead_time = [1,18]
 varinput = 1
 geoinput = 1
 runinput = 1
-urlbaseinput = 2
+urlbaseinput = 3
 meminput = 1
 write_to_file = False
 
