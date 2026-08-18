@@ -179,6 +179,9 @@ urlbasedict_retro = {
     5: "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-2-1-zarr-pds/",
     6: "s3://noaa-nwm-retrospective-3-0-pds/CONUS/netcdf/",
     7: "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-3-0-pds/CONUS/netcdf/",
+    8: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/Alaska/netcdf/",
+    9: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/Hawaii/netcdf/",
+    10: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/PR/netcdf/"
 }
 
 
