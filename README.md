@@ -70,10 +70,13 @@ pip install nwmurl
     - `5`:  "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-2-1-zarr-pds/"
     - `6`: "s3://noaa-nwm-retrospective-3-0-pds/CONUS/netcdf/",
     - `7`: "s3://ciroh-nwm-zarr-retrospective-data-copy/noaa-nwm-retrospective-3-0-pds/CONUS/netcdf/"
+    - `8`: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/Alaska/netcdf/"
+    - `9`: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/Hawaii/netcdf/"
+    - `10`: "https://noaa-nwm-retrospective-3-0-pds.s3.amazonaws.com/PR/netcdf/"
 - `selected_object_type`: A list of integers representing the object type. Available options include:
 	- `1` for forcing data
 	- `2` for model_output
- 
+
 - `selected_var_types`:  A list of integers or strings representing the variable of interest within the NWM data. Available options include:
     - `1`: ".CHRTOUT_DOMAIN1.comp"
     - `2`: ".GWOUT_DOMAIN1.comp"
@@ -82,7 +85,7 @@ pip install nwmurl
     - `5`: ".RTOUT_DOMAIN1.comp"
     - `6`: ".LDASIN_DOMAIN1.comp"
 - `write_to_file`: A Boolean A Boolean variable that saves the output urls into a .txt file if set `True`
-## Examples of how to use 
+## Examples of how to use
 
 
 
@@ -123,7 +126,7 @@ start_date = "200701010000"
 end_date = "200701030800"
 urlbaseinput = 2
 selected_var_types = [1, 2]
-selected_object_types = [1]  
+selected_object_types = [1]
 write_to_file = True
 
 file_list = nwmurl.generate_urls_retro(
@@ -142,11 +145,11 @@ We welcome contributions to nwmurl! To contribute to the development of this lib
 
 1. Fork the repository on GitHub.
 
-2. Clone your fork to your local machine:` 
+2. Clone your fork to your local machine:`
 
 	`git clone https://github.com/CIROH-UA/nwmurl.git`
 
- 3. Create a new branch for your contribution:` 
+ 3. Create a new branch for your contribution:`
 
 	`git checkout -b feature/your-feature-name`
 
@@ -157,7 +160,7 @@ We welcome contributions to nwmurl! To contribute to the development of this lib
 
 6. Commit your changes with descriptive commit messages.
 
-7. Push your changes to your fork:`` 
+7. Push your changes to your fork:``
 
 
 8. Open a pull request on the main repository, describing your changes and why they should be merged.
